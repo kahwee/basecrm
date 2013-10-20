@@ -1,0 +1,25 @@
+{
+	"name": "basecrm",
+	"version": "0.9.2",
+	"title": "Base CRM in Node.js",
+	"description": "Base CRM",
+	"author": "KahWee Teng",
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/kahwee/basecrm.git"
+	},
+	"maintainers": [{
+		"name": "KahWee Teng",
+		"email": "t@kw.sg",
+		"url": "https://github.com/kahwee"
+	}],
+	"homepage": "https://github.com/kahwee/basecrm.git",
+	"devDependencies": {
+		"request": "latest",
+		"async": "latest"
+	},
+	"license": "MIT",
+	"scripts": {
+		"test": "grunt travis --verbose"
+	}
+}
