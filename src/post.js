@@ -2,9 +2,8 @@ var request = require('request');
 var when = require('when');
 var uri = 'https://sales.futuresimple.com/api/v1/contacts.json';
 
-module.exports = function(base, method, path) {
+module.exports = function(base, path) {
 	var reqData = base.reqData;
-	reqData.method = method;
 	var parts = {};
 	if (typeof path === 'string') {
 		parts = path.split('/');
@@ -20,8 +19,6 @@ module.exports = function(base, method, path) {
 	}
 	if (parts[0] === 'contacts') {
 		reqData.uri = 'https://sales.futuresimple.com/api/v1/contacts.json';
-	} else if (parts[0] === 'deals') {
-		reqData.uri = 'https://sales.futuresimple.com/api/v1/deals.json';
 	}
 	var deferred = when.defer();
 	request(
