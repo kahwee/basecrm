@@ -2,9 +2,16 @@ var request = require('request');
 var when = require('when');
 var uri = 'https://sales.futuresimple.com/api/v1/contacts.json';
 
-module.exports = function(base, method, path) {
+module.exports = function(base, method, path, data) {
 	var reqData = base.reqData;
 	reqData.method = method;
+	if (data) {
+		if ((method === 'POST' || method === 'PUT')) {
+			reqData.form = data;
+		} else if (method === 'GET') {
+			reqData.qs = data;
+		}
+	}
 	var parts = {};
 	if (typeof path === 'string') {
 		parts = path.split('/');

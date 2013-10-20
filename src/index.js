@@ -8,13 +8,13 @@ var BaseCrm = function(token) {
 		}
 	};
 }
-BaseCrm.prototype.get = function(path) {
-	return require('./get')(this, 'GET', path);
+BaseCrm.prototype.get = function(path, data) {
+	return require('./get')(this, 'GET', path, data);
 }
-BaseCrm.prototype.post = function(path) {
-	return require('./get')(this, 'POST', path);
+BaseCrm.prototype.post = function(path, data) {
+	return require('./get')(this, 'POST', path, data);
 }
-BaseCrm.prototype.put = function(path) {
-	return require('./get')(this, 'PUT', path);
+BaseCrm.prototype.put = function(path, data) {
+	return require('./get')(this, 'PUT', path, data);
 }
 module.exports = BaseCrm;
