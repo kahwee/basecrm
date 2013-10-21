@@ -1,6 +1,5 @@
 var request = require('request');
 var when = require('when');
-var uri = 'https://sales.futuresimple.com/api/v1/contacts.json';
 
 module.exports = function(base, method, path, data) {
 	var reqData = base.reqData;
@@ -14,7 +13,8 @@ module.exports = function(base, method, path, data) {
 	}
 	var parts = {};
 	if (typeof path === 'string') {
-		parts = path.trim().split('/');
+		path = path.trim();
+		parts = path.split('/');
 	}
 	if (!parts) {
 		throw {
@@ -25,15 +25,15 @@ module.exports = function(base, method, path, data) {
 			}
 		}
 	}
-	if (parts[1] === 'contacts') {
-		reqData.uri = 'https://sales.futuresimple.com/api/v1/contacts.json';
-	} else if (parts[1] === 'deals') {
-		reqData.uri = 'https://sales.futuresimple.com/api/v1/deals.json';
+	if (['contacts', 'deals'].indexOf(parts[1]) >= 0) {
+		reqData.uri = 'https://sales.futuresimple.com/api/v1';
 	}
+	reqData.uri += path;
 	var deferred = when.defer();
 	request(
 		reqData,
 		function(err, response, body) {
+			console.log(err, response.statusCode, body);
 			if (!err && response.statusCode == 200) {
 				deferred.resolver.resolve(body);
 			} else {
