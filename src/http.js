@@ -28,7 +28,7 @@ module.exports = function(base, method, path, data) {
 	if (['contacts', 'deals'].indexOf(parts[1]) >= 0) {
 		reqData.uri = 'https://sales.futuresimple.com/api/v1';
 	}
-	reqData.uri += path;
+	reqData.uri += path + '.' + base.format;
 	var deferred = when.defer();
 	request(
 		reqData,

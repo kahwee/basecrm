@@ -1,5 +1,6 @@
-var BaseCrm = function(token) {
+var BaseCrm = function(token, format) {
 	this.token = token;
+	this.format = format ? format : 'json';
 	this.reqData = {
 		headers: {
 			'X-Pipejump-Auth': token,
