@@ -14,7 +14,7 @@ module.exports = function(base, method, path, data) {
 	}
 	var parts = {};
 	if (typeof path === 'string') {
-		parts = path.split('/');
+		parts = path.trim().split('/');
 	}
 	if (!parts) {
 		throw {
@@ -25,9 +25,9 @@ module.exports = function(base, method, path, data) {
 			}
 		}
 	}
-	if (parts[0] === 'contacts') {
+	if (parts[1] === 'contacts') {
 		reqData.uri = 'https://sales.futuresimple.com/api/v1/contacts.json';
-	} else if (parts[0] === 'deals') {
+	} else if (parts[1] === 'deals') {
 		reqData.uri = 'https://sales.futuresimple.com/api/v1/deals.json';
 	}
 	var deferred = when.defer();
@@ -37,7 +37,7 @@ module.exports = function(base, method, path, data) {
 			if (!err && response.statusCode == 200) {
 				deferred.resolver.resolve(body);
 			} else {
-				deferred.resolver.reject(err);
+				deferred.resolver.reject(response.statusCode, body);
 			}
 		}
 	);
