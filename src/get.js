@@ -33,8 +33,8 @@ module.exports = function(base, method, path, data) {
 	var deferred = when.defer();
 	request(
 		reqData,
-		function(error, response, body) {
-			if (!error && response.statusCode == 200) {
+		function(err, response, body) {
+			if (!err && response.statusCode == 200) {
 				deferred.resolver.resolve(body);
 			} else {
 				deferred.resolver.reject(err);
