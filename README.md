@@ -1,6 +1,8 @@
 basecrm
 =======
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kahwee/basecrm.svg)](https://greenkeeper.io/)
+
 ## Insatll
 
 ```
