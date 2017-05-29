@@ -27,6 +27,6 @@
 		"node": "*"
 	},
 	"dependencies": {
-		"when": "~2.5.1"
+		"when": "~3.7.8"
 	}
 }
